@@ -9,6 +9,3 @@ All the four panels are devoted to different types of data exploration:
 * **Protein intensity distribution**: protein intensity distributions of imputed and not imputed data for different user selected missingness thresholds are put in comparison
 * **Single protein intensity distribution**: chosen a specific protein, its protein distributions of imputed and not imputed data are comparatively plotted 
 * **Topological Data Analysis of proteomic data**: Topological Data Analysis enables the creation of topologies from imputed and not imputed data for different missingness thresholds
-
-
-![Dashboard's architecture](Architecture.PNG)
