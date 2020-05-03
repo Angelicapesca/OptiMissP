@@ -6,6 +6,6 @@ The first panel allows the upload of the original not imputed proteomic dataset 
 
 All the four panels are devoted to different types of data exploration:
 * **Missingness' distribution**: two histrograms show the distribution of the number of missing values for instances (patients) and features (proteins)
-* **Protein intensity distribution**: protein intensity distributions of imputed and not imputed data at user selected missingness thresholds are compared
-* **Single protein intensity distribution**:
-* **Topological Data Analysis of proteomic data**:
+* **Protein intensity distribution**: protein intensity distributions of imputed and not imputed data for different user selected missingness thresholds are put in comparison
+* **Single protein intensity distribution**: chosen a specific protein, its protein distributions of imputed and not imputed data are comparatively plotted 
+* **Topological Data Analysis of proteomic data**: topologies are created from imputed and not imputed data at different missingness threshold by Topological Data Analysis
