@@ -1,6 +1,6 @@
 # OptiMissP Dashboard
 
-The dashboard allows the assessment of the missingness of data-independent acquisition mass spectrometry proteomic data. It contributes to define the better informed combination of imputation method and missingess threshold for the handling of missing values. 
+The dashboard allows the qualitative and visual assessment of the missingness of data-independent acquisition mass spectrometry proteomic data. It contributes to define the better informed combination of imputation method and missingess threshold for the handling of missing values. 
 
 The first panel allows the upload of the original not imputed proteomic dataset and its imputation. Otherwise, the user can upload the imputed dataset too. 
 
