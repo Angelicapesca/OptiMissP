@@ -26,6 +26,7 @@ That's the result of uploading the not imputed dataset. Histrograms describing h
 
 Our dataset has proteins' intensities in the dataset's columns, and the "Protein button" is correctly setted as "column-wise". If we switch it to "row-wise", we can see in the figure below that the histrograms swap positions as the dataset is translated. This decision affects the following analysis too.
 
+![Screenshot](Fig2.PNG)
 [Figure with row-wise]
 
 3)	The imputation component implements the optional imputation of the data in real-time by allowing for method selection between MICE, MissForest, Probabilistic PCA, E-M imputation and Lowest Value; alternatively, the user may choose to upload a dataset already imputed.
