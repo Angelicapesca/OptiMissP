@@ -32,9 +32,8 @@ Our dataset has proteins' intensities in the dataset's columns, and the "Protein
 
 As in the figure, just choose an imputation method and click the "Impute!" button. Otherwise upload an imputed dataset just like you did with the not imputed one at step 1).
 
-<p align="center">
-<img src="https://github.com/Angelicapesca/OptiMissP/Fig3.PNG?raw=true" alt="Figure"/>
-</p>
+
+![Screenshot](Fig3.PNG)
 
 4)	The fourth component presents the distribution of the mean protein intensity in the imputed versus non-imputed datasets and allows for the head-to-head visual comparison of the protein’s intensities in imputed and non-imputed data in the whole studied cohort. A slider widget allows for the selection of a missingness threshold: for the complete dataset, it filters out those with fewer missing values than the selected threshold (i.e. if the threshold is set to 80% only proteins with less than the 80% missing values in the samples are considered). As the missingness threshold is selected with the slider, density plots illustrate the two distributions (in imputed and non-imputed data) and their overlap.      Distributions’ peaks (computed as maximum of value of the density function) are highlighted with a vertical dashed line. The graphic outputs are complemented with quantitative details about the number of considered proteins, the percentage of missing values in both imputed and not imputed datasets, and statistical parameters for a quantitative comparison between the distribution of imputed and not imputed data. These indicators include information about distributions’ quartiles and peaks (and their distance), and the p-value of the two-sample Kolmogorov-Smirnov test used to compare the two distributions.
 
