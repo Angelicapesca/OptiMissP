@@ -14,7 +14,7 @@ All the four panels are devoted to different types of data exploration:
 
 OptiMissP is a dashboard based on two components dedicated to upload the original not-imputed datasets and to perform an imputation step, in order to retrieve an imputed dataset to compare with the original one. The user can choose between Lowest Value Imputation under the assumption of missingness not at random (meaning: protein intensities are missing because too low and so under the instrumentation detection limit) and MissForests, MICE, Probabilistic PCA and E-M imputation under the assumption of missingness at random.
 
-Six components are used to analyse missingness distribution and compare the informative value of the imputed and non-imputed datasets and a final component to perform TDA. Each of the components is described in detail as follows:
+Three components (3,4,5) are used to analyse missingness distribution and compare the informative value of the imputed and non-imputed datasets and a final component (6) to perform TDA. These are integrated with two components (1,2) to upload and impute data. Each of the components is described in detail as follows:
 
 1)	The Uploader serves to upload text files of non-imputed (or pre-imputed) data. The text files should ideally have instances (patients) organized into rows and features (proteins) arranged into columns, but the user can select if the proteins are presented column-wise or row-wise in the uploaded dataset.
 
