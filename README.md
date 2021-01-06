@@ -26,7 +26,7 @@ That's the result of uploading the not imputed dataset. Histrograms describing h
 
 Our dataset has proteins' intensities in the dataset's columns, and the "Proteins button" is correctly setted as "column-wise". If we switch it to "row-wise", we can see in the figure below that the histrograms swap positions as the dataset is translated. This decision affects the following analysis too.
 
-![Screenshot](Fig2.PNG)
+![Screenshot](Fig2.png)
 
 [Figure with row-wise]
 
