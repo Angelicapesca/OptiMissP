@@ -42,9 +42,7 @@ As in the figure, just choose an imputation method and click the "Impute!" butto
 
 5)	In this section, the user can choose a specific protein of interest by its code or name (as identified in the dataset) and observe its degree of missingness and the discrepancy between its intensities’ distributions in imputed and non-imputed data. This is particularly useful to observe how the distribution of a specific protein (e.g. a potential biomarker) is affected by the choice of the imputation method, as it may influence the validity of downstream analysis on that protein.
 
-Here some examples of distriutions for different proteins.
-
-[Figure with different proteins distr]
+![Screenshot](Fig5.PNG)
 
 6)	The TDA Mapper component performs a two-dimensional topological analysis to show data-driven topologies built from imputed and non-imputed data. The user can decide on which TDA Mapper parameters and missingness threshold to use. Additional features enrich the resulting network with information about the missingness in each node (determined by the mean percentage) and any observed clusters in the topologies (and the options to optimize these). Identification of clusters within the TDA network is based on the cluster_optimal R function.
 
