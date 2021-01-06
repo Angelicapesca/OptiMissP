@@ -48,7 +48,8 @@ As in the figure, just choose an imputation method and click the "Impute!" butto
 
 The user can choose TDA's resolution parameters and lenses, if he/she desideres to enrich the topologis with missingness information or perform an optimal clustering.
 
-[foto not enriched, enriched, clustering]
+![Screenshot](Fig6.PNG)
+
 
 The user can explore missingness thresholds with the comparative density plots of imputed and non-imputed data. This allows the user to select missingness thresholds with a slider widget and shows the overlapping distributions of imputed (in red) and non-imputed (in blue) protein intensities given the selected threshold, as density plots. Within this section, it is also possible to choose a specific protein by its name (from a drop-down menu) and observe the density plots of imputed and non-imputed data for the selected protein only. 
 Finally, the last tab focuses on the application of TDA Mapper. Here the user can re-set the thresholds of missingness, choose TDA basic (resolution and geometric scale) and advanced (function for data projection into space) parameters and run the analysis. The dashboard will display two resulting networks: the top one based on non-imputed data (i.e. the information about missingness is not included to build the shape and represent the data) and the bottom one based on imputed data. It is also possible to enrich the networks with the average missingness of each of the subjects in the TDA nodes, retrieved from the non-imputed dataset.
