@@ -28,6 +28,9 @@ Our dataset has proteins' intensities in the dataset's columns, and the "Protein
 
 ![Screenshot](Fig2.PNG)
 
+
+![alt text](https://github.com/Angelicapesca/OptiMissP/Fig2.png?raw=true)
+
 [Figure with row-wise]
 
 3)	The imputation component implements the optional imputation of the data in real-time by allowing for method selection between MICE, MissForest, Probabilistic PCA, E-M imputation and Lowest Value; alternatively, the user may choose to upload a dataset already imputed.
