@@ -15,15 +15,15 @@ options(shiny.maxRequestSize=30*1024^2)
 # ====================== FUNCTIONS ======================================================
 # Mean Value by Columns (excluding NAs)
 mean.col.na <- function(df){
-  mean.prot <- c()
+  mean.col <- c()
   
   for (i in seq(from=1,to=ncol(df),by=1)){
     if (is.na(mean(df[,i],na.rm = TRUE)) != TRUE){
-      mean.prot <- c(mean.prot, mean(df[,i],na.rm = TRUE))
+      mean.col <- c(mean.col, mean(df[,i],na.rm = TRUE))
     }
   }
   
-  return(mean.prot)
+  return(mean.col)
 }
 
 # Mean Value by Rows (excluding NAs)
@@ -368,6 +368,9 @@ shinyApp(
         }
         perc.threshold <- input$slider/100
         indeces <- which(number.missing.values <= (perc.threshold*nrow(df1)))
+        if(length(indeces) < 2){
+          return()
+        }else{
         dataset1 <- df1[,indeces]
         new.percentage.missingness <- (sum(is.na(dataset1))/(nrow(dataset1)*ncol(dataset1)))*100
         
@@ -376,6 +379,7 @@ shinyApp(
         str3 <- paste("- the imputed dataset: ",as.character(round(perc2)),"%")
         str4 <- paste("- the subset of the original not imputed dataset at the given missingness threshold: ",as.character(round(new.percentage.missingness)),"%")
         HTML(paste(str1, str2,str3,str4, sep = '<br/>'))
+        }
       }
     }) 
     output$txtout4 <- renderText({
@@ -387,10 +391,15 @@ shinyApp(
         }
         perc.threshold <- input$slider/100
         indeces <- which(number.missing.values <= (perc.threshold*nrow(df1)))
+        if(length(indeces) < 2){
+          showNotification("Not enough proteins to compute the operations", duration = NULL, type = "warning", id = "percthreshold")
+          return()
+        }else{
         dataset1 <- df1[,indeces]
         new.percentage.missingness <- (sum(is.na(dataset1))/(nrow(dataset1)*ncol(dataset1)))*100
         number.of.features.left <- ncol(dataset1)
         HTML(paste("<b>","Number of considered proteins: ","</b>",as.character(number.of.features.left)))
+        }
       }
     })
     output$txtout5 <- renderText({
@@ -407,9 +416,13 @@ shinyApp(
         }
         
         threshold <- perc.threshold*nrow(df1)
-        
+
         quant.indeces <- which(perc.missingness <= threshold)
         
+        
+        if(length(quant.indeces) < 2){
+          return()
+        }else{
         df12 <- df1[,quant.indeces]
         
         df22 <- df2[,quant.indeces]
@@ -432,6 +445,7 @@ shinyApp(
         }
         
         HTML(paste("<b>",t$method,"'s p-value: ","</b>",pval))
+        }
       }
     })
     
@@ -452,6 +466,10 @@ shinyApp(
         
         quant.indeces <- which(perc.missingness <= threshold)
         
+        if(length(quant.indeces) < 2){
+          return()
+        }else{
+        
         mean.qprot1 <- mean.col.na(df1[,quant.indeces])
         
         mean.qprot2 <- mean.col.na(df2[,quant.indeces])
@@ -466,6 +484,7 @@ shinyApp(
         str3 <- paste("- Not imputed data: <b>","0%: ","</b>",signif(qnt_notimp[1], digits = 3), "| ", "<b>","25%: ","</b>",signif(qnt_notimp[2], digits = 3), "| ", "<b>","50%: ","</b>",signif(qnt_notimp[3], digits = 3), "| ", "<b>","75%: ","</b>",signif(qnt_notimp[4], digits = 3), "| ", "<b>","100%: ","</b>",signif(qnt_notimp[5], digits = 3))
         
         HTML(paste(str1, str3, str2, sep = '<br/>'))
+        }
       }
     })
     
@@ -487,6 +506,10 @@ shinyApp(
         
         quant.indeces <- which(perc.missingness <= threshold)
         
+        if(length(quant.indeces) < 2){
+          return()
+        }else{
+        
         mean.qprot1 <- mean.col.na(df1[,quant.indeces])
         
         mean.qprot2 <- mean.col.na(df2[,quant.indeces])
@@ -506,6 +529,7 @@ shinyApp(
         str3 <- paste("- Imputed data: ",signif(peak_imp, digits = 3))
         str4 <- paste("Distance between peaks: ",signif(diff, digits = 3))
         HTML(paste(str1, str2,str3,str4, sep = '<br/>'))
+        }
       }
     })
     
@@ -545,26 +569,39 @@ shinyApp(
           #   labs(title="Frequency of Missing Values for each Protein") +
           #   labs(x="Protein", y="Count")
           
+          # if(round(perc.threshold*nrow(df1),digits = 0) <= min(perc.missingness)){
+          #   threshold <- min(perc.missingness)
+          # }
+          # else {
+          #   threshold <- perc.threshold*nrow(df1)
+          # }
           
           threshold <- perc.threshold*nrow(df1)
-          
           quant.indeces <- which(perc.missingness <= threshold)
           
-          # Mean in Nurture.data1
-          mean.qprot1 <- mean.col.na(df1[,quant.indeces])
-          
-          # Mean in Nurture.data2
-          mean.qprot2 <- mean.col.na(df2[,quant.indeces])
-          
-          # Overlap
-          X <- list(NotImputed=mean.qprot1, Imputed=mean.qprot2)
-          #p_overlap <- overlap(X)$OV
-          
-          
-          df <- data.frame("MeanProteinIntensity"=c(mean.qprot2,mean.qprot1), "Data" = c(rep("Imputed", length(mean.qprot1)), rep("Not Imputed", length(mean.qprot2))))
-          
-          overlap_plots_sublist <- ggplot(df, aes(x=MeanProteinIntensity, fill=Data)) + geom_density(alpha=0.4)  + xlab("Mean Protein Intensity for each Patient") + ylab("Density") + ggtitle("Distribution of Patients' Mean Protein Intesity")
-          return(overlap_plots_sublist)
+          if(length(quant.indeces) < 2){
+            return()
+          }else{
+            
+            quant.indeces <- which(perc.missingness <= threshold)
+            # Mean in Nurture.data1
+            mean.qprot1 <- mean.col.na(df1[,quant.indeces])
+            
+            # Mean in Nurture.data2
+            mean.qprot2 <- mean.col.na(df2[,quant.indeces])
+            
+            # Overlap
+            X <- list(NotImputed=mean.qprot1, Imputed=mean.qprot2)
+            #p_overlap <- overlap(X)$OV
+            
+            
+            df <- data.frame("MeanProteinIntensity"=c(mean.qprot2,mean.qprot1), "Data" = c(rep("Imputed", length(mean.qprot1)), rep("Not Imputed", length(mean.qprot2))))
+            
+            overlap_plots_sublist <- ggplot(df, aes(x=MeanProteinIntensity, fill=Data)) + geom_density(alpha=0.4)  + xlab("Mean Protein Intensity for each Patient") + ylab("Density") + ggtitle("Distribution of Patients' Mean Protein Intesity")
+            return(overlap_plots_sublist)
+            
+          }
+        
         }
         # Output
         densityplots.funct(df1,df2,perc.threshold)
