@@ -22,7 +22,7 @@ Three components (2,4,5) are used to analyse missingness distribution and compar
 
 That's the result of uploading the not imputed dataset. Histrograms describing how missingness is distributed across proteins and patients appear immediately in the tabs on the right.
 
-![Screenshot](Fig1.PNG)
+![Screenshot](Fig1.jpg)
 
 Our dataset has proteins' intensities in the dataset's columns, and the "Proteins button" is correctly setted as "column-wise". If we switch it to "row-wise", we can see in the figure below that the histrograms swap positions as the dataset is translated. This decision affects the following analysis too.
 
